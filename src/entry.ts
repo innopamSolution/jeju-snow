@@ -7,7 +7,7 @@ export function isMobileDevice(): boolean {
   return /Android.+Mobile|iPhone|iPod|Windows Phone/i.test(navigator.userAgent)
 }
 
-// 현재 경로(/jeju-snow/stats)를 모바일 주소(/jeju-snow/mobile.html#/stats)로 바꾼다
+// 현재 경로(/jeju-snow-dev/stats)를 모바일 주소(/jeju-snow-dev/mobile.html#/stats)로 바꾼다
 export function mobileUrl(): string {
   const base = import.meta.env.BASE_URL
   const path = window.location.pathname.startsWith(base) ? window.location.pathname.slice(base.length) : ''

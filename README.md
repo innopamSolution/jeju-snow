@@ -3,8 +3,8 @@
 Figma 시안(포트홀 flow · `448:1169`)을 기반으로 만든 **Vite + React 19 SPA 목업**입니다.
 백엔드 없이 모든 데이터는 `src/data/*.ts`의 목업 데이터로 동작하며, GitHub Pages에 정적으로 배포됩니다.
 
-- 배포 주소: https://innopamsolution.github.io/jeju-snow/
-- 코드 저장소: [innopam/jeju-snow](https://github.com/innopam/jeju-snow) · 화면 배포 저장소: [innopamSolution/jeju-snow](https://github.com/innopamSolution/jeju-snow)
+- 배포 주소: https://innopamsolution.github.io/jeju-snow-dev/
+- 코드 저장소: [innopam/jeju-snow-ops](https://github.com/innopam/jeju-snow-ops) · 화면 배포 저장소: [innopamSolution/jeju-snow-dev](https://github.com/innopamSolution/jeju-snow-dev)
   (innopam 조직 Pages는 innopam.com 으로 연결돼 있어, 화면은 개인 계정 Pages로 배포)
 
 ## 화면 구성 및 구현 기능
@@ -58,7 +58,7 @@ Figma 시안(포트홀 flow · `448:1169`)을 기반으로 만든 **Vite + React
 
 ```bash
 npm install
-npm run dev        # PC http://localhost:5173/jeju-snow/ · 모바일 http://localhost:5173/jeju-snow/mobile.html
+npm run dev        # PC http://localhost:5173/jeju-snow-dev/ · 모바일 http://localhost:5173/jeju-snow-dev/mobile.html
 npm run typecheck  # TypeScript 타입 검사 (tsc -b)
 npm run build      # 타입 검사 후 dist/ 생성 (PC·모바일 HTML, SPA 라우팅용 404.html 포함)
 ```
@@ -71,12 +71,22 @@ npm run build      # 타입 검사 후 dist/ 생성 (PC·모바일 HTML, SPA 라
 | 언어 | TypeScript | 6.0.3 | 화면 코드(.ts/.tsx) 및 타입 검사 (`strict`) |
 | 빌드 | Vite | 8.2.1 | PC·모바일 HTML을 빌드 입력으로 사용 |
 
-- 진입점: PC `index.html` → `src/main.pc.tsx` (`BrowserRouter`, `basename=/jeju-snow/`), 모바일 `mobile.html` → `src/main.mobile.tsx` (`HashRouter`, 주소 `mobile.html#/stats`). 화면 컴포넌트는 함께 쓰고 화면 폭에 따라 반응형으로 배치합니다. 휴대폰으로 PC 주소를 열면 모바일 진입점으로 넘어갑니다(`?pc` 를 붙이면 PC 유지).
+- 진입점: PC `index.html` → `src/main.pc.tsx` (`BrowserRouter`, `basename=/jeju-snow-dev/`), 모바일 `mobile.html` → `src/main.mobile.tsx` (`HashRouter`, 주소 `mobile.html#/stats`). 화면 컴포넌트는 함께 쓰고 화면 폭에 따라 반응형으로 배치합니다. 휴대폰으로 PC 주소를 열면 모바일 진입점으로 넘어갑니다(`?pc` 를 붙이면 PC 유지).
 - React Router 7, 버전은 `package.json`에 정확히 고정(`^` 없음)
 - UI: 제주도 component library(component.html) 기준 — Pretendard 글꼴(번들 포함), 버튼·입력·탭·표·배지·팝업 등. 순수 CSS(CSS 커스텀 프로퍼티), 외부 UI 라이브러리 없음
 - 지도: OpenLayers + 브이월드(K-Geo플랫폼) 배경지도, 노선은 벡터 레이어, 마커는 실제 경위도 기준
 
 ## 배포
 
-두 저장소 모두에 push 되도록 `origin`에 push URL 2개가 설정돼 있습니다. `innopamSolution/jeju-snow`의 `main`에 push 되면 `.github/workflows/deploy.yml`이 빌드 후 GitHub Pages로 배포합니다.
+두 저장소 모두에 push 되도록 `origin`에 push URL 2개가 설정돼 있습니다. `innopamSolution/jeju-snow-dev`의 `main`에 push 되면 `.github/workflows/deploy.yml`이 빌드 후 GitHub Pages로 배포합니다. Pages 하위 경로는 저장소 이름(`VITE_BASE=/<저장소 이름>/`)을 따라가므로 저장소 이름을 바꿔도 따로 고칠 곳이 없습니다.
+
+맥 로컬 `origin` 의 push URL 2개는 새 이름으로 바꿔 둡니다.
+
+```bash
+git remote set-url origin https://github.com/innopam/jeju-snow-ops.git
+git config --unset-all remote.origin.pushurl
+git remote set-url --add --push origin https://github.com/innopam/jeju-snow-ops.git
+git remote set-url --add --push origin https://github.com/innopamSolution/jeju-snow-dev.git
+git remote -v
+```
 GitHub Pages는 서버 rewrite를 지원하지 않으므로 `index.html`을 `404.html`로 복사해 하위 경로 새로고침을 처리합니다.

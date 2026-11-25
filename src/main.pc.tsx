@@ -1,4 +1,4 @@
-// PC 진입점 (index.html) — 주소는 /jeju-snow/stats 형태. 모바일 기기로 열면 모바일 진입점(mobile.html)으로 넘긴다.
+// PC 진입점 (index.html) — 주소는 /jeju-snow-dev/stats 형태. 모바일 기기로 열면 모바일 진입점(mobile.html)으로 넘긴다.
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'

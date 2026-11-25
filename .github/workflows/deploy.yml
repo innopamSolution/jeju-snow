@@ -16,8 +16,9 @@ concurrency:
 
 jobs:
   build:
-    # 화면 배포는 개인 계정 저장소(innopamSolution/jeju-snow)에서만 — innopam 조직 Pages는 innopam.com 으로 리다이렉트되므로 사용하지 않음
-    if: github.repository == 'innopamSolution/jeju-snow'
+    # 화면 배포는 innopamSolution 계정 저장소(jeju-snow-dev)에서만 — innopam 조직 Pages는 innopam.com 으로 리다이렉트되므로 사용하지 않음
+    # 저장소 이름이 아니라 소유자로 판단 → 이름을 바꿔도 배포가 멈추지 않는다
+    if: github.repository_owner == 'innopamSolution'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,6 +31,8 @@ jobs:
         env:
           # 브이월드(K-Geo플랫폼) 인증키 — 저장소 Settings › Secrets › Actions 의 VWORLD_KEY
           VITE_VWORLD_KEY: ${{ secrets.VWORLD_KEY }}
+          # Pages 하위 경로 = 저장소 이름
+          VITE_BASE: /${{ github.event.repository.name }}/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
