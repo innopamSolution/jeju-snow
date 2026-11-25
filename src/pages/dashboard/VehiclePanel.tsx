@@ -11,7 +11,7 @@ import type { WorkOrderData } from './WorkOrder'
 const TYPES = ['전체', '유니목', '임차', '덤프', '다목적']
 const STATUS_SPLIT: { key: string | null; label: string; color: string }[] = [
   { key: null, label: '전체', color: '#222' },
-  { key: 'working', label: '제설 중', color: '#fcbe2d' },
+  { key: 'working', label: '제설 중', color: '#ffb020' },
   { key: 'standby', label: '대기', color: '#3979ee' },
   { key: 'done', label: '종료', color: '#9198a5' },
 ]

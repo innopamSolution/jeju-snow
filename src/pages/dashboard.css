@@ -153,7 +153,7 @@
 .stack-bar { display: flex; align-items: center; gap: 16px; }
 .stack-bar > div { flex: 1; display: flex; gap: 3px; height: 12px; border-radius: 6px; overflow: hidden; }
 .stack-bar i { height: 12px; }
-.stack-bar b { font-size: 14px; color: #168e79; letter-spacing: -0.14px; }
+.stack-bar b { font-size: 14px; color: #169c55; letter-spacing: -0.14px; }
 
 .warn-banner { background: #151515; border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; gap: 10px; }
 .warn-banner > div { display: flex; align-items: center; gap: 10px; }
@@ -178,7 +178,7 @@
 .hz-row--th:hover { background: var(--g100); }
 .hz-row > b { font-weight: 700; color: #222; }
 .hz-row > b.hz-temp { color: #2563eb; }
-.hz-row > b.hz-low { color: #f93c65; }
+.hz-row > b.hz-low { color: #d92332; }
 .hz-row > span:nth-child(5) { font-size: 11px; color: #444; white-space: nowrap; }
 .hz-row > .hz-type { font-size: 11px; font-weight: 500; white-space: nowrap; }
 .hz-seg { display: flex; flex-direction: column; gap: 1px; padding-left: 8px; min-width: 0; white-space: nowrap; overflow: hidden; }
@@ -346,7 +346,7 @@
 .traffic-label { position: absolute; transform: translate(-50%, -50%); padding: 3px 8px; border-radius: 999px; background: rgba(255,255,255,.9); font-size: 11px; font-weight: 500; color: #555; letter-spacing: -0.11px; white-space: nowrap; line-height: 1; }
 /* 제설 우선노선 — 노선을 따라 반복되는 네이비 순위 배지 · 끝점 */
 .priority-badge { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px; background: #07154d; color: #fff; font-size: 11px; font-weight: 500; letter-spacing: -0.11px; white-space: nowrap; line-height: 1; z-index: 1; }
-.priority-badge em { width: 6px; height: 6px; border-radius: 50%; background: #f93c65; box-shadow: 0 0 0 1.5px #fff; }
+.priority-badge em { width: 6px; height: 6px; border-radius: 50%; background: #dc2638; box-shadow: 0 0 0 1.5px #fff; }
 .priority-badge:hover { filter: brightness(.88); }
 .priority-end { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #fff; border: 2px solid #07154d; box-sizing: border-box; }
 .route-tip { position: absolute; transform: translate(-50%, calc(-100% - 10px)); padding: 8px 10px; border-radius: 6px; background: var(--p900); color: #fff; font-size: 12px; line-height: 18px; white-space: nowrap; z-index: 6; }
@@ -354,7 +354,7 @@
 .legend__body .legend__traffic i { width: 16px; border-radius: 4px; background: rgba(32,34,36,.28); }
 .legend__body .legend__priority { gap: 6px; font-size: 10px; color: #222; }
 .legend__body .legend__priority i { width: 16px; height: 8px; border-radius: 4px; background: #07154d; position: relative; }
-.legend__body .legend__priority i.late::after { content: ''; position: absolute; right: -2px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #f93c65; box-shadow: 0 0 0 1px #fff; }
+.legend__body .legend__priority i.late::after { content: ''; position: absolute; right: -2px; top: -2px; width: 5px; height: 5px; border-radius: 50%; background: #dc2638; box-shadow: 0 0 0 1px #fff; }
 .legend__body .legend__priority i.end { height: 2px; border-radius: 1px; background: #9198a5; }
 .legend__body .legend__priority i.end::after { content: ''; position: absolute; right: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: #fff; border: 1.5px solid #07154d; box-sizing: border-box; }
 .trail { transition: opacity .2s; }
@@ -368,7 +368,7 @@
 .seg-dot:hover, .seg-dot.on { transform: scale(1.35); box-shadow: 0 0 0 3px rgba(55, 52, 143, .35); }
 .seg-dot .mk.refreeze {
   position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%;
-  border: 2px dashed #f93c65; animation: spin 6s linear infinite, pulse 1.6s ease-in-out infinite; pointer-events: none;
+  border: 2px dashed #dc2638; animation: spin 6s linear infinite, pulse 1.6s ease-in-out infinite; pointer-events: none;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes pulse { 50% { opacity: .45; } }
@@ -383,7 +383,7 @@
 .seg-pop__refreeze em { font-style: normal; font-weight: 700; }
 .seg-pop__refreeze em.cold { color: #2563eb; }
 .seg-pop__refreeze em.hot { color: #d92332; }
-.seg-pop__warn { font-style: normal; margin-left: 6px; font-size: 10px; font-weight: 700; color: #fff; background: #f93c65; padding: 1px 5px; border-radius: 3px; }
+.seg-pop__warn { font-style: normal; margin-left: 6px; font-size: 10px; font-weight: 700; color: #fff; background: #dc2638; padding: 1px 5px; border-radius: 3px; }
 .seg-pop__close { width: 16.5px; height: 16.5px; flex: none; display: grid; place-items: center; }
 .seg-pop__close .icon { width: 18px; height: 18px; color: #111; }
 .seg-pop__links { width: 100%; display: flex; gap: 6px; border-top: 1px solid #eee; padding-top: 8px; }

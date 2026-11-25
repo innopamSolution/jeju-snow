@@ -103,7 +103,7 @@ function Kpi({ label, value, unit, sub, bar }: KpiProps) {
 function KpiRow({ kpi }: { kpi: StatsData['kpi'] }) {
   const recv = ({ ok, warn, miss }: { ok: number; warn: number; miss: number }) => {
     const tot = ok + warn + miss
-    return { rate: (((ok + warn) / tot) * 100).toFixed(1), bar: ([[ok, '#168e79'], [warn, '#fcbe2d'], [miss, '#d0d5dd']] satisfies [number, string][]).filter(([w]) => w), tot }
+    return { rate: (((ok + warn) / tot) * 100).toFixed(1), bar: ([[ok, '#169c55'], [warn, '#ffb020'], [miss, '#d0d5dd']] satisfies [number, string][]).filter(([w]) => w), tot }
   }
   const sensor = recv(kpi.sensor)
   const vehicle = recv(kpi.vehicle)
@@ -112,7 +112,7 @@ function KpiRow({ kpi }: { kpi: StatsData['kpi'] }) {
   return (
     <div className="kpi-row">
       <Kpi label="위험요소 발생" value={kpi.occurred.toLocaleString()} unit="건" sub={<>이전 기간 대비 <span className={up ? 'up' : 'down'}>{up ? '▲' : '▼'} {Math.abs(Number(kpi.prevDelta))}%</span></>} />
-      <Kpi label="조치 완료율" value={kpi.rate} unit="%" bar={[[rate, '#168e79'], [100 - rate, '#f2f4f7']]} sub={`완료 ${kpi.done.toLocaleString()} / ${kpi.occurred.toLocaleString()}건`} />
+      <Kpi label="조치 완료율" value={kpi.rate} unit="%" bar={[[rate, '#169c55'], [100 - rate, '#f2f4f7']]} sub={`완료 ${kpi.done.toLocaleString()} / ${kpi.occurred.toLocaleString()}건`} />
       <Kpi label="평균 조치 소요시간" value={`${kpi.avg.h}시간 ${kpi.avg.m}`} unit="분" sub="발생 → 조치 완료 기준" />
       <Kpi label="미조치 · 장기 미조치" value={kpi.unresolved} unit="건" sub={`장기 미조치(2시간↑) ${kpi.longUnresolved}건 · 조치중 ${kpi.inProgress}건`} />
       <Kpi label="제설 작업 실적" value={kpi.works.toLocaleString()} unit="회" sub={`작업 연장 ${kpi.length.toLocaleString()}km · 구간 완료율 ${kpi.segRate}%`} />
@@ -312,7 +312,7 @@ function ActionCard({ labels, action, unit }: { labels: string[]; action: StatsD
     <section className="card chart-card">
       <div className="chart-card__head">
         <h3>{unit}별 조치 실적</h3>
-        <Legend square items={[['조치 완료', '#168e79'], ['미완료', '#d0d5dd']]} />
+        <Legend square items={[['조치 완료', '#169c55'], ['미완료', '#d0d5dd']]} />
       </div>
       <div className="vbar">
         <div className="vbar__y">
@@ -324,7 +324,7 @@ function ActionCard({ labels, action, unit }: { labels: string[]; action: StatsD
             <div key={i} className="vbar__col" title={`${labels[i]} · 조치 완료 ${a.done}건 · 미완료 ${a.undone}건`}>
               <span style={{ height: `${((a.done + a.undone) / top) * 100}%` }}>
                 {a.undone > 0 && <i style={{ flex: a.undone, background: '#d0d5dd' }} />}
-                <i style={{ flex: a.done, background: '#168e79' }} />
+                <i style={{ flex: a.done, background: '#169c55' }} />
               </span>
               {i % step === 0 && <small>{labels[i]}</small>}
             </div>

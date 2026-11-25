@@ -23,27 +23,27 @@ const ISSUE_BADGE: Record<string, string> = { '작업 누락': 'tone-red', '제�
 const ROADS = [
   {
     id: 1, name: '1100도로 · 성판악', issue: '작업 누락', pending: '미조치 6h', hot: true,
-    seg: 'K-12', route: '1100도로', vehicle: 1, pin: { size: 22, color: '#f93c65' }, card: { dx: -114, dy: 263, w: 232 },
-    wx: ['-4.1℃', '적설 3.2cm · 풍속 7m/s'], road: ['-3.8℃', '아이스', '#ef4444', '수막 0.4mm'], car: ['4호', '05:40 이후 미통과', '#f93c65'],
+    seg: 'K-12', route: '1100도로', vehicle: 1, pin: { size: 22, color: '#dc2638' }, card: { dx: -114, dy: 263, w: 232 },
+    wx: ['-4.1℃', '적설 3.2cm · 풍속 7m/s'], road: ['-3.8℃', '아이스', '#ef4444', '수막 0.4mm'], car: ['4호', '05:40 이후 미통과', '#d92332'],
   },
   {
     id: 2, name: '비자림로 · 송당', issue: '제설 취약', pending: '미조치 5h', hot: true,
-    seg: 'V-2', route: '비자림로', vehicle: null, pin: { size: 18, color: '#f93c65' }, card: { dx: -88, dy: 97, w: 222 },
-    wx: ['-3.0℃', '적설 2.1cm · 풍속 9m/s'], road: ['-2.4℃', '아이스', '#ef4444', '재결빙 진행'], car: ['—', '08:10 1회 살포 후 미재살포', '#f93c65'],
+    seg: 'V-2', route: '비자림로', vehicle: null, pin: { size: 18, color: '#dc2638' }, card: { dx: -88, dy: 97, w: 222 },
+    wx: ['-3.0℃', '적설 2.1cm · 풍속 9m/s'], road: ['-2.4℃', '아이스', '#ef4444', '재결빙 진행'], car: ['—', '08:10 1회 살포 후 미재살포', '#d92332'],
   },
   {
     id: 3, name: '5·16도로 · 교래', issue: '작업 누락', pending: '미조치 4h', hot: true,
-    seg: 'K-16-2', route: '5·16도로', vehicle: 7, pin: { size: 18, color: '#f93c65' }, card: { dx: -112, dy: -187, w: 222 },
-    wx: ['-2.6℃', '적설 1.8cm · 풍속 5m/s'], road: ['-2.9℃', '적설', '#ec4899', '적설심 2.0cm'], car: ['1호', '진행 중 · 구간 미도달', '#f93c65'],
+    seg: 'K-16-2', route: '5·16도로', vehicle: 7, pin: { size: 18, color: '#dc2638' }, card: { dx: -112, dy: -187, w: 222 },
+    wx: ['-2.6℃', '적설 1.8cm · 풍속 5m/s'], road: ['-2.9℃', '적설', '#ec4899', '적설심 2.0cm'], car: ['1호', '진행 중 · 구간 미도달', '#d92332'],
   },
   {
     id: 4, name: '번영로 · 대천', issue: '작업 누락', pending: '미조치 3h', hot: false,
-    seg: 'B-4', route: '번영로', vehicle: 4, pin: { size: 18, color: '#fcbe2d' }, card: { dx: -111, dy: -293, w: 222 },
+    seg: 'B-4', route: '번영로', vehicle: 4, pin: { size: 18, color: '#ffb020' }, card: { dx: -111, dy: -293, w: 222 },
     wx: ['-1.2℃', '강수 0.5mm · 습도 91%'], road: ['-0.4℃', '젖음', '#1d4ed8', '결빙 전이 주의'], car: ['7호', '10:30 인근 통과 · 미살포', '#999'],
   },
   {
     id: 5, name: '평화로 · 광령', issue: '제설 취약', pending: '미조치 2h', hot: false,
-    seg: 'P-2', route: '평화로', vehicle: null, pin: { size: 18, color: '#fcbe2d' }, card: { dx: -110, dy: -164, w: 222 },
+    seg: 'P-2', route: '평화로', vehicle: null, pin: { size: 18, color: '#ffb020' }, card: { dx: -110, dy: -164, w: 222 },
     wx: ['-1.5℃', '습도 88% · 풍속 4m/s'], road: ['-1.2℃', '슬러시', '#f97316', '마찰 0.45'], car: ['—', '07:30 1회 살포', '#999'],
   },
 ]
@@ -60,14 +60,14 @@ const PRECIP = ['없음', '비', '진눈깨비', '눈']
 const MATRIX: [temp: string, vals: number[]][] = [
   ['0℃ 이상', [3, 8, 15, 22]], ['0 ~ -2℃', [12, 31, 44, 52]], ['-2 ~ -4℃', [26, 47, 61, 68]], ['-4℃ 이하', [38, 55, 72, 81]],
 ]
-const CELL: [min: number, bg: string, fg: string, grade: string][] = [[80, '#f93c65', '#fff', '심각'], [60, '#ff8a3d', '#fff', '경계'], [30, '#fcbe2d', '#5c4300', '주의'], [0, '#f2f4f7', '#667085', '관심']]
+const CELL: [min: number, bg: string, fg: string, grade: string][] = [[80, '#dc2638', '#fff', '심각'], [60, '#df7300', '#fff', '경계'], [30, '#ffb020', '#111', '주의'], [0, '#f2f4f7', '#667085', '관심']]
 const cellOf = (v: number) => CELL.find(([min]) => v >= min)! // 발생률은 0 이상이라 마지막 칸(0)에서 반드시 걸린다
 const SURFACE_BARS: [label: string, value: number][] = [['2℃', 12], ['0℃', 21], ['-1℃', 30], ['-2℃', 38], ['-3℃', 46], ['-4℃', 54], ['-5℃↓', 60]]
-const surfaceColor = (v: number) => (v >= 60 ? '#ff8a3d' : v >= 30 ? '#fcbe2d' : '#d0d5dd')
+const surfaceColor = (v: number) => (v >= 60 ? '#df7300' : v >= 30 ? '#ffb020' : '#d0d5dd')
 const SUMMARY: [grade: '심각' | '경계' | '주의', color: string, bg: string, title: string, act: string][] = [
-  ['심각', '#f93c65', 'rgba(249,60,101,0.16)', '기온 -4℃ 이하 + 강설 시 발생률 81%', '강설 예보 시 중산간 노선 사전 제설 투입'],
-  ['경계', '#ff8a3d', 'rgba(255,138,61,0.16)', '기온 -2℃ 이하 + 진눈깨비·눈 시 61% 이상', '제설제 사전 살포 · 순찰 강화'],
-  ['주의', '#b7860b', 'rgba(252,190,45,0.16)', '강수 후 기온 하강 시 블랙아이스 비중 54%', '노면온도 -1℃ 도달 전 재살포'],
+  ['심각', '#d92332', '#ffe8e9', '기온 -4℃ 이하 + 강설 시 발생률 81%', '강설 예보 시 중산간 노선 사전 제설 투입'],
+  ['경계', '#d97800', '#fff1d7', '기온 -2℃ 이하 + 진눈깨비·눈 시 61% 이상', '제설제 사전 살포 · 순찰 강화'],
+  ['주의', '#8c6b00', '#fff5ce', '강수 후 기온 하강 시 블랙아이스 비중 54%', '노면온도 -1℃ 도달 전 재살포'],
 ]
 const FILTERS: [label: string, options: string[]][] = [
   ['관할', ['전체', '도청', '제주시', '서귀포시']],
@@ -105,7 +105,7 @@ export default function Fusion() {
         const hit = ROADS.find((r) => r.route === route.name)
         const f = new Feature(new LineString(route.coords.map((c) => fromLonLat(c))))
         f.setStyle(hit
-          ? [new Style({ stroke: new Stroke({ color: '#fff', width: 9 }) }), new Style({ stroke: new Stroke({ color: hit.hot ? '#f93c65' : '#fcbe2d', width: 5, lineCap: 'round' }) })]
+          ? [new Style({ stroke: new Stroke({ color: '#fff', width: 9 }) }), new Style({ stroke: new Stroke({ color: hit.hot ? '#dc2638' : '#ffb020', width: 5, lineCap: 'round' }) })]
           : new Style({ stroke: new Stroke({ color: 'rgba(72,128,255,0.8)', width: 4, lineCap: 'round' }) }))
         src.addFeature(f)
       })
@@ -195,11 +195,11 @@ export default function Fusion() {
       {ROADS.filter(cardShown).map((r) => (
         <button key={r.id} className={`fcard${sel === r.id ? ' on' : ''}`} style={{ left: cardPos(r).left, top: cardPos(r).top, width: cardPos(r).w }} onClick={() => setSel((cur) => (cur === r.id ? null : r.id))}>
           <span className="fcard__head">
-            <i style={{ background: r.hot ? '#f93c65' : '#fcbe2d' }}>{r.id}</i>
+            <i style={{ background: r.hot ? '#dc2638' : '#ffb020' }}>{r.id}</i>
             <b>{r.name}</b>
             <em className={`pbadge ${ISSUE_BADGE[r.issue]}`}>{r.issue}</em>
             <span style={{ flex: 1 }} />
-            <strong style={{ color: r.hot ? '#f93c65' : '#d98c00' }}>{r.pending}</strong>
+            <strong style={{ color: r.hot ? '#d92332' : '#8c6b00' }}>{r.pending}</strong>
           </span>
           <hr />
           <span className="fcard__line"><small>기상</small><b>{r.wx[0]}</b><span>{r.wx[1]}</span></span>
@@ -249,8 +249,8 @@ export default function Fusion() {
             <div className="fside__head">
               <p className="fside__title">기상조건별 위험요소 발생</p>
               <span className="fside__legend">
-                <span><i style={{ background: '#4880ff' }} />적설</span>
-                <span><i style={{ background: '#9dbbff' }} />결빙</span>
+                <span><i style={{ background: '#3b82f6' }} />적설</span>
+                <span><i style={{ background: '#93c5fd' }} />결빙</span>
               </span>
               <small>단위: 건</small>
             </div>
@@ -261,8 +261,8 @@ export default function Fusion() {
                   <div key={label} className="wxbars__row" title={`${label} · 적설 ${snowN}건 · 결빙 ${total - snowN}건`}>
                     <span>{label}</span>
                     <span className="wxbars__bar">
-                      <i style={{ width: `${(snow / WEATHER_TRACK) * 100}%`, background: '#4880ff' }} />
-                      <i style={{ width: `${(ice / WEATHER_TRACK) * 100}%`, background: '#9dbbff' }} />
+                      <i style={{ width: `${(snow / WEATHER_TRACK) * 100}%`, background: '#3b82f6' }} />
+                      <i style={{ width: `${(ice / WEATHER_TRACK) * 100}%`, background: '#93c5fd' }} />
                     </span>
                     <b>{total}</b>
                   </div>
@@ -330,7 +330,7 @@ export default function Fusion() {
             <div className="fsum">
               {SUMMARY.map(([g, , , title, act]) => (
                 <div key={g} className="fsum__row">
-                  <em className={`grade grade--${{ 심각: 'danger', 경계: 'warning', 주의: 'mild' }[g]}`}>{g}</em>
+                  <em className={`grade grade--${{ 심각: 'danger', 경계: 'warning', 주의: 'caution' }[g]}`}>{g}</em>
                   <p><b>{title}</b><span>→ {act}</span></p>
                 </div>
               ))}
@@ -376,7 +376,7 @@ export default function Fusion() {
                     <em className={`pbadge ${ISSUE_BADGE[r.issue]}`}>{r.issue}</em>
                     <b>{r.name}</b>
                   </span>
-                  <strong style={{ color: r.hot ? '#f93c65' : '#fcbe2d' }}>{r.pending}</strong>
+                  <strong style={{ color: r.hot ? '#d92332' : '#8c6b00' }}>{r.pending}</strong>
                 </button>
               ))}
             </div>

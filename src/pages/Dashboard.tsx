@@ -43,7 +43,7 @@ const MODES = [
   { key: 'surface', label: '노면 상태' },
 ]
 const LEGENDS: Record<string, { title: string; items: [string | null, string][] }> = {
-  status: { title: '구간', items: [['#f93c65', '미작업'], ['#ff8a3d', '제설 필요'], ['#fcbe2d', '진행'], ['#00b69b', '완료'], [null, '재결빙 주의']] },
+  status: { title: '구간', items: [['#dc2638', '미작업'], ['#df7300', '제설 필요'], ['#ffb020', '진행'], ['#169c55', '완료'], [null, '재결빙 주의']] },
   count: { title: '제설 횟수', items: [0, 1, 2, 3, 4, 5].map((n) => [COUNT_COLORS[Math.min(n, 5)], n === 5 ? '5회 이상' : n ? `${n}회` : '미작업']) },
   surface: { title: '도로상태', items: Object.entries(SURFACE_COLORS).map(([k, c]) => [c, k]) },
 }
@@ -54,7 +54,7 @@ const PRIORITY_LAYER = '제설 우선노선'
 type TrafficRoute = Route & { traffic: NonNullable<Route['traffic']> }
 const MAIN_AXES = ROUTES.filter((r): r is TrafficRoute => r.traffic?.grade === 1)
 const HAZARD_LEGEND = Object.entries(HAZARD_COLORS)
-const STATE_LINE: Record<string, string> = { 미작업: '#f93c65', '제설 필요': '#ff8a3d', 진행중: '#fcbe2d', 완료: '#00b69b' }
+const STATE_LINE: Record<string, string> = { 미작업: '#dc2638', '제설 필요': '#df7300', 진행중: '#ffb020', 완료: '#169c55' }
 const PANEL_DESKTOP = 426
 const mq = (q: string) => typeof window !== 'undefined' && window.matchMedia(q).matches
 const segGeo = segAt

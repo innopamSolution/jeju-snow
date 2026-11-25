@@ -37,8 +37,8 @@
   --danger: #d92338;
   --warning: #dc7200;
   --orange: #f59e0b;
-  --done: #168e79;
-  --pink: #f93c65;
+  --done: #169c55;
+  --pink: #dc2638;
   --link: #2563eb;
   --shadow-float: 0 0 4px rgba(0, 0, 0, 0.16);
   --shadow-chip: 0 3px 4.5px rgba(16, 24, 40, 0.13);
@@ -206,7 +206,7 @@ button:hover > .radio.on { border-color: #2457d6; }
 .grade--danger { background: #ffe8e9; color: #d92332; }
 .grade--warning { background: #fff1d7; color: #d97800; }
 .grade--mild { background: #e9f8ef; color: #169c55; }
-.grade--working { background: #fff5ce; color: #8c6b00; } /* 차량 상태 제설 중 — 라이브러리 tone-yellow */
+.grade--working, .grade--caution { background: #fff5ce; color: #8c6b00; } /* 제설 중 · 위험등급 주의 — 라이브러리 tone-yellow */
 .grade--vehicle { background: #edf4ff; color: #3979ee; }
 .grade--complete { background: #f0edff; color: #4b43a3; }
 .grade--neutral { background: #ededf0; color: #6b6b73; }

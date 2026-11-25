@@ -4,7 +4,7 @@ export const SNOW_STATUS_KEYS = [
   { key: '미작업', color: '#d92338' },
   { key: '제설 필요', color: '#dc7200' },
   { key: '진행 중', color: '#f59e0b' },
-  { key: '완료', color: '#168e79' },
+  { key: '완료', color: '#169c55' },
 ]
 
 // 행정시(관할)별 종합 현황 — 도청·제주시·서귀포시 합계 = 전체
@@ -93,10 +93,10 @@ export const VEHICLES: Vehicle[] = [
 // 위험구간 목록 (GIS-003) — 읍면동 묶음 · 노면온도 순. 색 = 위험 유형(HAZARD_COLORS), 굵기 = 등급
 export const HAZARD_GRADES = ['심각', '경계', '주의']
 export const HAZARD_GRADE_STYLE: Record<string, { tone: string; text: string; bar: number }> = {
-  // 배지 = component library Grade badge (1등급 danger · 2등급 warning · 3등급 mild)
+  // 배지 = component library Grade badge (심각 danger · 경계 warning · 주의 tone-yellow)
   심각: { tone: 'danger', text: '#d92332', bar: 7 },
   경계: { tone: 'warning', text: '#d97800', bar: 5 },
-  주의: { tone: 'mild', text: '#169c55', bar: 3 },
+  주의: { tone: 'caution', text: '#8c6b00', bar: 3 },
 }
 export interface HazardRow {
   road: string

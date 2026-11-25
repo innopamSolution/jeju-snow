@@ -3,8 +3,8 @@ import type { LonLat } from './geo'
 
 // 제설 구간 목업 데이터 (지도 좌표는 data/geo.js 의 SEGMENTS_GEO)
 
-export const STATE_COLOR: Record<string, string> = { 미작업: '#f93c65', '제설 필요': '#ff8a3d', 진행중: '#fcbe2d', 완료: '#00b69b' }
-export const RISK_COLOR: Record<string, string> = { 심각: '#e7000b', 경계: '#e0661a', 주의: '#e7000b', 관심: '#16a05d' }
+export const STATE_COLOR: Record<string, string> = { 미작업: '#dc2638', '제설 필요': '#df7300', 진행중: '#ffb020', 완료: '#169c55' }
+export const RISK_COLOR: Record<string, string> = { 심각: '#d92332', 경계: '#d97800', 주의: '#8c6b00', 관심: '#169c55' }
 
 // UC-GIS-009 제설 작업 상태 및 재결빙 위험 구간 / 구간 정보 레이어
 export interface SegWeather {

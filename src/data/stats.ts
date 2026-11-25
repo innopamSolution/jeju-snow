@@ -12,7 +12,7 @@ export const HAZARD_TYPES = ['전체', '결빙', '적설']
 export const GRADE_OPTIONS = ['전체 (주의 이상)', '심각', '경계', '주의']
 export type Grade = '심각' | '경계' | '주의'
 export const GRADES: Grade[] = ['심각', '경계', '주의']
-export const GRADE_COLORS: Record<string, string> = { 심각: '#f93c65', 경계: '#ff8a3d', 주의: '#fcbe2d' }
+export const GRADE_COLORS: Record<string, string> = { 심각: '#dc2638', 경계: '#df7300', 주의: '#ffb020' }
 const ROUTES = ['516도로', '1100도로', '평화로', '산록북로', '애조로', '번영로', '남조로', '비자림로', '일주도로', '한라산로']
 
 export interface StatsFilter {
