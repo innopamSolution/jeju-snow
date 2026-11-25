@@ -28,7 +28,7 @@ export default function Login() {
   return (
     <div className="login">
       <div className="login__brand">
-        <img src={A.logo} alt="Jeju" />
+        <img src={A.logoFull} alt="제주특별자치도" />
         <p>제설·결빙 대응 시스템</p>
       </div>
       <form className="login__card" onSubmit={submit} noValidate>

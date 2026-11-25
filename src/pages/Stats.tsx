@@ -103,7 +103,7 @@ function Kpi({ label, value, unit, sub, bar }: KpiProps) {
 function KpiRow({ kpi }: { kpi: StatsData['kpi'] }) {
   const recv = ({ ok, warn, miss }: { ok: number; warn: number; miss: number }) => {
     const tot = ok + warn + miss
-    return { rate: (((ok + warn) / tot) * 100).toFixed(1), bar: ([[ok, '#168e79'], [warn, '#fcbe2d'], [miss, '#c9cdd3']] satisfies [number, string][]).filter(([w]) => w), tot }
+    return { rate: (((ok + warn) / tot) * 100).toFixed(1), bar: ([[ok, '#168e79'], [warn, '#fcbe2d'], [miss, '#d0d5dd']] satisfies [number, string][]).filter(([w]) => w), tot }
   }
   const sensor = recv(kpi.sensor)
   const vehicle = recv(kpi.vehicle)
@@ -312,7 +312,7 @@ function ActionCard({ labels, action, unit }: { labels: string[]; action: StatsD
     <section className="card chart-card">
       <div className="chart-card__head">
         <h3>{unit}별 조치 실적</h3>
-        <Legend square items={[['조치 완료', '#168e79'], ['미완료', '#c9cdd3']]} />
+        <Legend square items={[['조치 완료', '#168e79'], ['미완료', '#d0d5dd']]} />
       </div>
       <div className="vbar">
         <div className="vbar__y">
@@ -323,7 +323,7 @@ function ActionCard({ labels, action, unit }: { labels: string[]; action: StatsD
           {action.map((a, i) => (
             <div key={i} className="vbar__col" title={`${labels[i]} · 조치 완료 ${a.done}건 · 미완료 ${a.undone}건`}>
               <span style={{ height: `${((a.done + a.undone) / top) * 100}%` }}>
-                {a.undone > 0 && <i style={{ flex: a.undone, background: '#c9cdd3' }} />}
+                {a.undone > 0 && <i style={{ flex: a.undone, background: '#d0d5dd' }} />}
                 <i style={{ flex: a.done, background: '#168e79' }} />
               </span>
               {i % step === 0 && <small>{labels[i]}</small>}

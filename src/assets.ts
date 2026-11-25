@@ -1,5 +1,7 @@
 // Figma(포트홀 flow · 448:1169)에서 내려받은 에셋을 의미 있는 이름으로 묶는다.
-import logo from './assets/fig/21b9b.png'
+// 로고 — 제주도 component library(assets/) 원본. 펼친 로고는 jeju-logo-dark.png 의 둘째 줄(포트홀 탐지 플랫폼 Admin)만 비운 것
+import logo from './assets/lib/jeju-symbol.png'
+import logoFull from './assets/lib/jeju-logo-dark-sirs.png'
 import icMenuDashboard from './assets/fig/408aa.svg'
 import icMenuChart from './assets/fig/6077e.svg'
 import icMenuFusion from './assets/fig/5dea1.svg'
@@ -90,7 +92,7 @@ import veh11 from './assets/fig/3367d.svg'
 import veh12 from './assets/fig/24e81.svg'
 
 export const A = {
-  logo, icMenuDashboard, icMenuChart, icMenuFusion, icCollapse, icMonitor, icLogout, icSettings,
+  logo, logoFull, icMenuDashboard, icMenuChart, icMenuFusion, icCollapse, icMonitor, icLogout, icSettings,
   icBell, icChevronDown, icPanelLeft, icPanelRight, icRadioOn, icCheck, icSearch, icSearch18,
   icSearchWhite, icDivider, icLayerMap, icUp18, icPin, icChevronRight, icChevronUp, icZoomIn,
   icZoomOut, icTooltipTip, icDistance, icArea, icCctv, icObserve, icLegendRefreeze, icVideo,

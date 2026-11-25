@@ -60,10 +60,10 @@ const PRECIP = ['없음', '비', '진눈깨비', '눈']
 const MATRIX: [temp: string, vals: number[]][] = [
   ['0℃ 이상', [3, 8, 15, 22]], ['0 ~ -2℃', [12, 31, 44, 52]], ['-2 ~ -4℃', [26, 47, 61, 68]], ['-4℃ 이하', [38, 55, 72, 81]],
 ]
-const CELL: [min: number, bg: string, fg: string, grade: string][] = [[80, '#f93c65', '#fff', '심각'], [60, '#ff8a3d', '#fff', '경계'], [30, '#fcbe2d', '#5c4300', '주의'], [0, '#eef0f3', '#6b7280', '관심']]
+const CELL: [min: number, bg: string, fg: string, grade: string][] = [[80, '#f93c65', '#fff', '심각'], [60, '#ff8a3d', '#fff', '경계'], [30, '#fcbe2d', '#5c4300', '주의'], [0, '#f2f4f7', '#667085', '관심']]
 const cellOf = (v: number) => CELL.find(([min]) => v >= min)! // 발생률은 0 이상이라 마지막 칸(0)에서 반드시 걸린다
 const SURFACE_BARS: [label: string, value: number][] = [['2℃', 12], ['0℃', 21], ['-1℃', 30], ['-2℃', 38], ['-3℃', 46], ['-4℃', 54], ['-5℃↓', 60]]
-const surfaceColor = (v: number) => (v >= 60 ? '#ff8a3d' : v >= 30 ? '#fcbe2d' : '#c9cdd3')
+const surfaceColor = (v: number) => (v >= 60 ? '#ff8a3d' : v >= 30 ? '#fcbe2d' : '#d0d5dd')
 const SUMMARY: [grade: '심각' | '경계' | '주의', color: string, bg: string, title: string, act: string][] = [
   ['심각', '#f93c65', 'rgba(249,60,101,0.16)', '기온 -4℃ 이하 + 강설 시 발생률 81%', '강설 예보 시 중산간 노선 사전 제설 투입'],
   ['경계', '#ff8a3d', 'rgba(255,138,61,0.16)', '기온 -2℃ 이하 + 진눈깨비·눈 시 61% 이상', '제설제 사전 살포 · 순찰 강화'],
@@ -112,7 +112,7 @@ export default function Fusion() {
       ROADS.filter((r) => r.vehicle).forEach((r) => {
         const v = VEHICLES_GEO.find((x) => x.id === r.vehicle)! // ROADS 의 차량 번호는 모두 VEHICLES_GEO 에 있다
         const f = new Feature(new LineString(vehicleTrack(v).trail.map((c) => fromLonLat(c))))
-        f.setStyle(new Style({ stroke: new Stroke({ color: '#262728', width: 2, lineDash: [5, 5] }) }))
+        f.setStyle(new Style({ stroke: new Stroke({ color: '#222', width: 2, lineDash: [5, 5] }) }))
         src.addFeature(f)
       })
       return [...base.normal, new VectorLayer({ source: src })]

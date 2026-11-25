@@ -68,7 +68,7 @@ function summarize(ids: number[], from: LonLat, to: LonLat): PickedSection | nul
 const styleOf = (selected: boolean, road: boolean) =>
   selected
     ? [new Style({ stroke: new Stroke({ color: '#fff', width: 9 }) }), new Style({ stroke: new Stroke({ color: '#3b82f6', width: 6 }) })]
-    : new Style({ stroke: new Stroke({ color: road ? '#475467' : '#98a2b3', width: road ? 3.5 : 2.5 }) })
+    : new Style({ stroke: new Stroke({ color: road ? '#344054' : '#98a2b3', width: road ? 3.5 : 2.5 }) })
 const markerStyle = (label: string, color: string) =>
   new Style({
     image: new Circle({ radius: 11, fill: new Fill({ color }), stroke: new Stroke({ color: '#fff', width: 2 }) }),

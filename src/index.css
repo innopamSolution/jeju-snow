@@ -15,14 +15,14 @@
   --g25: #fcfcfd; --g50: #f8f8f8; --g100: #f2f4f7; --g200: #e4e7ec; --g300: #d0d5dd; --g400: #98a2b3; --g500: #667085; --g700: #344054; --g900: #101828;
   --navy: #07154d;
   --lib-blue: #2878ee;
-  --bg-page: #f4f4f5;
+  --bg-page: #f4f4f4;
   --bg-surface: #fff;
   --bg-lnb: #111;
   --bg-lnb-item: #202020;
   --bg-lnb-active: var(--p600);
   --bg-brand: var(--p600);
   --bg-brand-dark: var(--navy);
-  --bg-subtle: #f5f6fa;
+  --bg-subtle: var(--g100);
   --bg-chip: #f2f4f7;
   --bg-control-on: #3b82f6;
   --border-divider: #e4e7ec;
@@ -33,7 +33,7 @@
   --text-helper: #777;
   --text-placeholder: #999;
   --text-disabled: #8a8a8a;
-  --accent: #3867e8;
+  --accent: #2563eb;
   --danger: #d92338;
   --warning: #dc7200;
   --orange: #f59e0b;
@@ -69,10 +69,13 @@ img { display: block; }
   display: flex; flex-direction: column; padding: 17px 14px; transition: width .2s;
 }
 .lnb.collapsed { width: 64px; }
-.lnb__brand { display: flex; align-items: center; gap: 9px; min-height: 55px; margin-bottom: 20px; padding-right: 26px; }
-.lnb__brand img { width: 66px; height: 28px; object-fit: contain; flex: none; }
-.lnb__brand p { color: #fff; font-size: 12px; font-weight: 700; line-height: 1.3; white-space: nowrap; }
-.lnb.collapsed .lnb__brand p, .lnb.collapsed .lnb__label { display: none; }
+/* 로고 — component library LNB(.lnb-logo-full 190px · 축약형 jeju-symbol). 로고 둘째 줄 자리에 시스템명을 둔다 */
+.lnb__brand { position: relative; display: flex; align-items: center; min-height: 55px; margin-bottom: 20px; }
+.lnb__logo { display: block; width: 190px; height: auto; flex: none; }
+.lnb__symbol { display: none; }
+.lnb__brand p { position: absolute; left: 72px; top: calc(50% + 1px); color: #fff; font-size: 12px; font-weight: 500; line-height: 1; white-space: nowrap; }
+.lnb.collapsed .lnb__brand p, .lnb.collapsed .lnb__label, .lnb.collapsed .lnb__logo { display: none; }
+.lnb.collapsed .lnb__symbol { display: block; }
 .lnb__collapse {
   position: absolute; right: 0; top: 23px; width: 29px; height: 43px; background: #151515; color: #fff;
   border: 1px solid #4a4a4a; border-right: 0; border-radius: 7px 0 0 7px; display: grid; place-items: center;
@@ -164,7 +167,7 @@ button:hover > .radio.on { border-color: #2457d6; }
 }
 .dropdown__list li { padding: 7px 10px; border-radius: 4px; font-size: 13px; color: #333; cursor: pointer; text-align: left; white-space: nowrap; }
 .dropdown--sm .dropdown__list li { font-size: 12px; }
-.dropdown__list li:hover, .dropdown__list li.sel { background: var(--g100); }
+.dropdown__list li:hover, .dropdown__list li.sel { background: var(--p50); }
 
 /* Search (Medium 42 · Small 34) — 앞쪽 돋보기 아이콘 */
 .search { display: flex; align-items: center; gap: 8px; height: 42px; padding: 0 13px 0 13px; border: 1px solid #b8b8b8; border-radius: 7px; background: #fff; color: #333; }
@@ -203,7 +206,7 @@ button:hover > .radio.on { border-color: #2457d6; }
 .grade--danger { background: #ffe8e9; color: #d92332; }
 .grade--warning { background: #fff1d7; color: #d97800; }
 .grade--mild { background: #e9f8ef; color: #169c55; }
-.grade--working { background: #fff8d9; color: #b98900; } /* 차량 상태 제설 중 — Figma badge/mild (노랑) */
+.grade--working { background: #fff5ce; color: #8c6b00; } /* 차량 상태 제설 중 — 라이브러리 tone-yellow */
 .grade--vehicle { background: #edf4ff; color: #3979ee; }
 .grade--complete { background: #f0edff; color: #4b43a3; }
 .grade--neutral { background: #ededf0; color: #6b6b73; }
@@ -268,7 +271,7 @@ button:hover > .radio.on { border-color: #2457d6; }
 .ltable th, .ltable td { height: 48px; padding: 10px 12px; border-right: 1px solid var(--g100); border-bottom: 1px solid var(--g200); text-align: center; vertical-align: middle; }
 .ltable th:last-child, .ltable td:last-child { border-right: 0; }
 .ltable thead th { height: 56px; background: #f0f1f4; font-weight: 800; }
-.ltable tbody tr:nth-child(even) > * { background: #fafafa; }
+.ltable tbody tr:nth-child(even) > * { background: #f8f8f8; }
 .ltable tbody tr:hover > * { background: rgba(0, 0, 0, .03); }
 .ltable tbody tr.selected > * { background: #e7f1ff; }
 
@@ -290,7 +293,7 @@ td > .empty-state { margin: 8px 0; }
 .section-title::before { content: ''; width: 4px; height: 16px; border-radius: 2px; background: var(--accent); }
 
 .toast {
-  position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); background: #202224; color: #fff;
+  position: fixed; left: 50%; bottom: 32px; transform: translateX(-50%); background: #151515; color: #fff;
   padding: 10px 16px; border-radius: 8px; font-size: 13px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,.2);
 }
 

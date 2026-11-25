@@ -66,7 +66,8 @@ export default function Layout() {
       {isMobile && drawer && <div className="lnb-backdrop" onClick={() => setDrawer(false)} />}
       <aside className={`lnb${collapsed && !isMobile ? ' collapsed' : ''}`}>
         <div className="lnb__brand">
-          <img src={A.logo} alt="Jeju" />
+          <img className="lnb__logo" src={A.logoFull} alt="제주특별자치도" />
+          <img className="lnb__symbol" src={A.logo} alt="제주특별자치도" />
           <p>제설·결빙 대응 시스템</p>
         </div>
         <button className="lnb__collapse" onClick={() => (isMobile ? setDrawer(false) : setCollapsed(!collapsed))} aria-label={isMobile ? '메뉴 닫기' : '메뉴 접기'}>
